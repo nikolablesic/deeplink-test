@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uspešno plaćanje</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <div class="container">
+        <div class="info">
+            <div class="success-message">
+                <div class="success-icon"></div>
+                <span>Uspesno placanje!</span>
+            </div>
+            <div class="info-item">
+                <img src="location-pin.png" alt="Lokacija">
+                <span>Parking Promenada</span>
+            </div>
+            <div class="info-item">
+                <img src="car-logo.png" alt="Logo automobila">
+                <span>NS021NS &nbsp;</span>
+            </div>
+            <div class="info-item">
+                <img src="clock-logo.png" alt="Logo sata">
+                <span>Izlaz do:&nbsp;</span><b id="exit-time"></b>
+            </div>
+            <div class="info-item">
+                <img src="price-tag-logo.png" alt="Logo cene">
+                <span>Plaćeni iznos:&nbsp;</span><b>100,00RSD</b>
+            </div>
+            <br>
+            <div class="center-button">
+                <p>Hvala vam na plaćanju. Srećan put!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Funkcija za postavljanje vremena izlaska za 15 minuta od trenutnog vremena
+        function setExitTime() {
+            var currentTime = new Date();
+            var exitTime = new Date(currentTime.getTime() + 15 * 60000); // Dodajemo 15 minuta u milisekundama
+            var hours = exitTime.getHours();
+            var minutes = exitTime.getMinutes();
+            var seconds = exitTime.getSeconds();
+
+            hours = hours < 10 ? "0" + hours : hours;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            document.getElementById('exit-time').textContent = hours + ":" + minutes + ":" + seconds;
+        }
+
+        // Pozivamo funkciju za postavljanje vremena izlaska pri učitavanju stranice
+        window.onload = function () {
+            setExitTime();
+        };
+    </script>
+</body>
+</html>
