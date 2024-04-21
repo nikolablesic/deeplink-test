@@ -1,18 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <title>Click me</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plati Parking</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
-
 <body>
-  
-<div class="container">
-	<a href="myapp://price/300">Click me</a>
-</div>
+    <div class="container">
+        <div class="info">
+            <div class="info-item">
+                <img src="location-pin.png" alt="Location Pin">
+                <span>Parking Promenada</span>
+            </div>
+            <div class="info-item">
+                <img src="car-logo.png" alt="Car Logo">
+                <span>NS021NS &nbsp;</span>
+                <button class="edit-button"><span class="icon-pencil"></span></button>
+            </div>
+            <div class="info-item">
+                <img src="clock-logo.png" alt="Clock Logo">
+                <span>Vreme za naplatu:</span><b id="timer">00:05:00</b>
+            </div>
+            <div class="info-item">
+                <img src="price-tag-logo.png" alt="Price Tag Logo">
+                <span>Ukupan iznos:</span><b>100,00RSD</b>
+            </div>
+            <br>
+            <div class="bank-dropdown">
+                <select>
+                    <option value="" disabled selected>Izaberi banku</option>
+                    <option value="bank1">Halkbanka</option>
+                </select>
+            </div>
+            <div class="center-button">
+                <a href="https://halkbank.24x7.rs/ips/ek/fl/?data=SzpFS3xWOjAxfEM6MXxSOjI2NTMzMDAzMTAwMTQyMDI4NHxOOkNBTSBFTkdJTkVFUklORyBET098STpSU0QxMDAsMDB8U0Y6MjIxfE06NTQzMnxSUDo3NTA0MDAyQzI0MDg2MDAwMDAy&callback=https%3A%2F%2Fgoogle.com" class="pay-button">Plati</a>
+            </div>
+        </div>
+    </div>
 
-<script>
-</script>
+    <script>
+        // Function to start the timer
+        function startTimer(duration, display) {
+            var timer = duration, hours, minutes, seconds;
+            setInterval(function () {
+                hours = parseInt(timer / 3600, 10);
+                minutes = parseInt((timer % 3600) / 60, 10);
+                seconds = parseInt(timer % 60, 10);
 
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = hours + ":" + minutes + ":" + seconds;
+                ++timer;
+            }, 1000);
+        }
+
+        // Starting the timer from 5 minutes (300 seconds)
+        window.onload = function () {
+            var fiveMinutes = 300,
+                display = document.getElementById('timer');
+            startTimer(fiveMinutes, display);
+        };
+    </script>
 </body>
 </html>

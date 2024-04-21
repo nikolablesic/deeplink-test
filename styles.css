@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.info {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.info-item img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+.info-item span {
+    font-size: 16px;
+}
+
+.bank-dropdown {
+    margin-top: 10px;
+}
+
+.bank-dropdown select {
+    padding: 8px;
+    font-size: 16px;
+}
+
+.pay-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.pay-button:hover {
+    background-color: #0056b3;
+}
+.edit-button {
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.icon-pencil {
+    width: 20px;
+    height: 20px;
+    background-image: url('pencil-icon.png');
+    background-size: cover;
+    display: inline-block;
+}
+
+.edit-button:hover .icon-pencil {
+    filter: brightness(80%);
+}
+
+.center-button {
+    margin-top: 20px;
+    text-align: center;
+}
