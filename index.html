@@ -38,7 +38,7 @@
                 <a href="https://ipspos.bancaintesa.rs/ips/ek/fl/?data=SzpFS3xWOjAxfEM6MXxSOjI2NTMzMDAzMTAwMTQyMDI4NHxOOkNBTSBFTkdJTkVFUklORyBET098STpSU0QxMDAsMDB8U0Y6MjIxfE06NTQzMnxSUDo3NTA0MDAyQzI0MDg2MDAwMDAy&callback=https%3A%2F%2Fnikolablesic.github.io%2Fsuccessful-payment.html" class="pay-button">Plati</a>
             </div>
             <div class="center-button">
-                <button onclick="openDeepLink()" class="pay-button">Plati OTP</button>
+                <a href="intent://halkbank.24x7.rs/ips/ek/fl/?data=SzpFS3xWOjAxfEM6MXxSOjI2NTMzMDAzMTAwMTQyMDI4NHxOOkNBTSBFTkdJTkVFUklORyBET098STpSU0QxMDAsMDB8U0Y6MjIxfE06NTQzMnxSUDo3NTA0MDAyQzI0MDg2MDAwMDAy&callback=https%3A%2F%2Fnikolablesic.github.io%2Fsuccessful-payment.html#Intent;scheme=http;end" class="pay-button">Plati HALK</a>
             </div>
         </div>
     </div>
@@ -65,16 +65,6 @@
                 display = document.getElementById('timer');
             startTimer(fiveMinutes, display);
         };
-
-        function openDeepLink() {
-            window.location.href = "https://halkbank.24x7.rs/ips/ek/fl/?data=SzpFS3xWOjAxfEM6MXxSOjI2NTMzMDAzMTAwMTQyMDI4NHxOOkNBTSBFTkdJTkVFUklORyBET098STpSU0QxMDAsMDB8U0Y6MjIxfE06NTQzMnxSUDo3NTA0MDAyQzI0MDg2MDAwMDAy&callback=https%3A%2F%2Fnikolablesic.github.io%2Fsuccessful-payment.html";
-
-            setTimeout(function() {
-                if (document.visibilityState !== 'hidden') {
-                    alert("Failed to open deep link. Please try again later or visit the app manually.");
-                }
-            }, 1000);
-        }
     </script>
 </body>
 </html>
