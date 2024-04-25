@@ -1,67 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plati Parking</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Naplata parkiranja</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="container">
-        <div class="info">
-            <div class="info-item">
-                <img src="location-pin.png" alt="Location Pin">
-                <span>Parking Promenada</span>
-            </div>
-            <div class="info-item">
-                <img src="car-logo.png" alt="Car Logo">
-                <span>NS021NS &nbsp;</span>
-                <button class="edit-button"><span class="icon-pencil"></span></button>
-            </div>
-            <div class="info-item">
-                <img src="clock-logo.png" alt="Clock Logo">
-                <span>Vreme za naplatu:&nbsp;</span><b id="timer">00:05:00</b>
-            </div>
-            <div class="info-item">
-                <img src="price-tag-logo.png" alt="Price Tag Logo">
-                <span>Ukupan iznos:&nbsp;</span><b>100,00RSD</b>
-            </div>
-            <br>
-            <div class="bank-dropdown">
-                <select>
-                    <option value="" disabled selected>Izaberi banku</option>
-                    <option value="bank1">Banca Intesa</option>
-                </select>
-            </div>
-            <div class="center-button">
-                <a href="intent://ipspos.bancaintesa.rs/ips/ek/fl/?data=SzpFS3xWOjAxfEM6MXxSOjI2NTMzMDAzMTAwMTQyMDI4NHxOOkNBTSBFTkdJTkVFUklORyBET098STpSU0QxMDAsMDB8U0Y6MjIxfE06NTQzMnxSUDo3NTA0MDAyQzI0MDg2MDAwMDAy&callback=https%3A%2F%2Fnikolablesic.github.io%2Fsuccessful-payment.html#Intent;scheme=https;end" class="pay-button">Plati</a>
+
+<body onload="resizeClock()">
+    <main class="container">
+        <b style="font-size: 5.5rem;">NS 739 PF</b><br/><br/>
+        <p style="font-size: 3rem ;">Ukupan iznos:</p>
+        <b style="font-size: 3rem ;">100RSD</b><br/><br/>
+        <div class="box">
+            <svg class="clock-container">
+                <circle class="clock-shape"></circle>
+                <circle class="clock-shape main-circle"></circle>
+                <image xlink:href="car.png" class="center-image"/>
+            </svg>
+            <div class="content">
+                <span class="time hour">
+                    12
+                </span>
+                <b class="colon">:</b>
+                <span class="time min">
+                    00
+                </span>
             </div>
         </div>
-    </div>
-
-    <script>
-        function startTimer(duration, display) {
-            var timer = duration, hours, minutes, seconds;
-            setInterval(function () {
-                hours = parseInt(timer / 3600, 10);
-                minutes = parseInt((timer % 3600) / 60, 10);
-                seconds = parseInt(timer % 60, 10);
-
-                hours = hours < 10 ? "0" + hours : hours;
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-
-                display.textContent = hours + ":" + minutes + ":" + seconds;
-                ++timer;
-            }, 1000);
-        }
-
-        window.onload = function () {
-            var fiveMinutes = 300,
-                display = document.getElementById('timer');
-            startTimer(fiveMinutes, display);
-        };
-    </script>
+        <p style="font-size: 3rem; margin-top: 8rem;">25. April</p><br/><br/>
+        <div style="display: flex; align-items: center;">
+            <img src="location_pin.png" alt="Location Pin" style="height: 3rem; width: 3rem; margin-right: 1rem;">
+            <div>
+                <b style="font-size: 2rem;">Promenada</b>
+                <p style="font-size: 1.5rem;">Bulevar oslobođenja 119</p>
+            </div>
+        </div><br/><br/>
+        <button style="padding: 10px; min-width: 40%; border: 0px; background: #2ecc40; border-radius: 5px; color: #fff;">Nastavi na plaćanje</button>
+    </main>
+    <script src="app.js"></script>
 </body>
+
 </html>
