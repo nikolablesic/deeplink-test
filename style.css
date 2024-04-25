@@ -6,7 +6,7 @@
 
 
 :root {
-    --clockSize: 30rem;
+    --clockSize: 29rem;
     --bgColor: #FAF8FD;
     --mainColor: #2ECC40;
     --loadingSize: 0;
@@ -75,7 +75,7 @@ body {
     bottom: -10rem;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 5.5rem;
+    font-size: 5rem;
 }
 
 .sec {
