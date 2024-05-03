@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Plaćanje</title>
+    <link rel="stylesheet" href="payment_style.css">
+</head>
+<body>
+    <main class="container">
+        <b style="font-size: 4.5rem;">Placanje</b>
+        <img style="width: 80%;" src="ips_logo.png"/>
+        <p class="description">Izvršite plaćanje u okruženju vaše banke tako što ćete izabrati banku čiju mbanking aplikaciju imate na svom uređaju i kliknuti na dugme PLATI.</p>
+        <span>
+            <p class="amount">Iznos:</p><br/>
+            <b class="amount">100RSD</b>
+        </span>
+        <p class="description" style="text-align: left;">Platite mbanking aplikacijom svoje banke:</p>
+        <select id="bank-select" class="bank-select">
+            <option selected disabled>Izaberite banku</option>
+            <option value="https://www.addiko.rs/ips/ek/fl/">ADDIKO BANK</option>
+            <option value="https://ebanking.aikbanka.rs/ips/ek/fl/">AIK BANKA</option>
+            <option value="https://altabanka.24x7.rs/ips/ek/fl/">ALTA BANKA</option>
+            <option value="https://ipspos.bancaintesa.rs/ips/ek/fl/">BANCA INTESA</option>
+            <option value="https://online.mtsbanka.rs/ips/ek/fl/">BANKA POŠTANSKA ŠTEDIONICA - NOVA APP</option>
+            <option value="https://erstebank.24x7.rs/ips/ek/fl/">ERSTE BANK</option>
+            <option value="https://www.eurobank-direktna.rs/ips/ek/fl/">EUROBANK-DIREKTNA BANKA</option>
+            <option value="https://expobank.24x7.rs/ips/ek/fl/">EXPOBANK</option>
+            <option value="https://halkbank.24x7.rs/ips/ek/fl/">HALKBANK</option>
+            <option value="https://online.mobibanka.rs/ips/ek/fl/">MOBI BANKA</option>
+            <option value="https://mbankkombank.24x7.rs/ips/ek/fl/">NLB KOMERCIJALNA BANKA</option>
+            <option value="https://ebank.otpbanka.rs/ips/ek/fl/">OTP BANKA SRBIJA</option>
+            <option value="https://rol.raiffeisenbank.rs/ips/ek/fl/">RAIFFEISEN BANKA</option>
+            <option value="https://srpskabanka.24x7.rs/ips/ek/fl/">SRPSKA BANKA</option>
+            <option value="https://www.unicreditbank.rs/ips/ek/fl/">UNICREDIT BANK SRBIJA</option>
+        </select>
+        <button id="payment-button" class="payment-button">Plati</button>
+
+        <script>
+            document.getElementById("payment-button").addEventListener("click", function() {
+                var selectElement = document.getElementById("bank-select");
+                var selectedBank = selectElement.options[selectElement.selectedIndex].value;
+                var redirectURL = selectedBank + "?data=SzpFS3xWOjAxfEM6MXxSOjE2MDAwMDAwMDAyMTUzNTMzN3xOOkpLUCBQYXJraW5nIHNlcnZpcyBOb3ZpIFNhZHxJOlJTRDIwMCwwMHxTRjoyMjF8TTo0OTAwfFJQOjEwMDAxNjkwMjQxMTUwMDAwMDE=&callback=https%3A%2F%2Fnikolablesic.github.io%2Fsuccessful-payment.html";
+                window.location.href = redirectURL;
+            });
+        </script>
+    </main>
+</body>
+</html>
