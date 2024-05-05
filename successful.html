@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Naplata parkiranja</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="resizeClock()">
+    <main class="container">
+        <b style="font-size: 5.5rem;">NS 739 PF</b><br/><br/>
+        <p style="font-size: 3rem ;">Uplacen iznos:</p>
+        <b style="font-size: 3rem ;">100RSD</b><br/><br/>
+        <div class="box" style="display: contents;">
+            <img src="success.png" style="width: 20rem;"/><br/><br/>
+            <p style="font-size: 3rem; color: #2ecc40">Uspesno placanje!</p>
+        </div>
+        <p style="font-size: 3rem; margin-top: 8rem;">25. April</p><br/><br/>
+        <div style="display: flex; align-items: center;">
+            <img src="location_pin.png" alt="Location Pin" style="height: 3rem; width: 3rem; margin-right: 1rem;">
+            <div>
+                <b style="font-size: 2rem;">Promenada</b>
+                <p style="font-size: 1.5rem;">Bulevar oslobodjenja 119</p>
+            </div>
+        </div><br/><br/>
+        <a href="https://nsbike.co.rs/api/upload/racun_87" download="racun.pdf" style="text-decoration: none; width: 100%; display: contents;">
+            <button style="font-family: 'DS-DIGI', sans-serif; padding: 10px; min-width: 60%; border: 0px; background: #2ecc40; border-radius: 5px; color: #fff; font-size: 1.5rem;">Preuzmi racun</button>
+        </a>
+    </main>
+    <script src="app.js"></script>
+</body>
+
+</html>
