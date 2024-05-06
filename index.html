@@ -11,7 +11,7 @@
 
 <body onload="resizeClock()">
     <main class="container">
-        <b style="font-size: 5.5rem;">NS 739 PF</b><br/><br/>
+        <b style="font-size: 5.5rem;" id="licensePlate"></b><br/><br/>
         <p style="font-size: 3rem ;">Ukupan iznos:</p>
         <b style="font-size: 3rem ;">100RSD</b><br/><br/>
         <div class="box">
@@ -38,9 +38,19 @@
                 <p style="font-size: 1.5rem;">Bulevar oslobodjenja 119</p>
             </div>
         </div><br/><br/>
-        <button onclick="window.location.href = 'payment.html';" style="font-family: 'DS-DIGI', sans-serif; padding: 10px; min-width: 60%; border: 0px; background: #2ecc40; border-radius: 5px; color: #fff; font-size: 1.5rem;">Nastavi na plaćanje</button>
+        <button onclick="window.location.href = 'payment.html?tablice=' + encodeURIComponent(document.getElementById('licensePlate').innerText);" style="font-family: 'DS-DIGI', sans-serif; padding: 10px; min-width: 60%; border: 0px; background: #2ecc40; border-radius: 5px; color: #fff; font-size: 1.5rem;">Nastavi na plaćanje</button>
     </main>
     <script src="app.js"></script>
+    <script>
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        document.getElementById('licensePlate').innerText = getUrlParameter('tablice');
+    </script>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
-let stopwatchSeconds = 0;
-let stopwatchMinutes = 0;
+let stopwatchSeconds = 53;
+let stopwatchMinutes = 9;
 let stopwatchHours = 0;
 let stopwatchInterval;
 
@@ -54,7 +54,7 @@ function clockFun() {
     const minTxt = document.querySelector('.min');
     var colon = document.querySelector('.colon');
     //    UPDATING THEM WITH HOUR AND MINUTE VALUE
-    hourTxt.innerHTML = hour;
+    hourTxt.innerHTML = min;
     //minTxt.innerHTML = min;
     minTxt.innerHTML = sec;
     //    ADDING SIMPLE SECOND EFFECT TO THE COLON
