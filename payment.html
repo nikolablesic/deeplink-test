@@ -34,16 +34,17 @@
             <option value="intent://srpskabanka.24x7.rs/ips/ek/fl/">SRPSKA BANKA</option>
             <option value="intent://www.unicreditbank.rs/ips/ek/fl/">UNICREDIT BANK SRBIJA</option>
         </select>
-        <button id="payment-button" class="payment-button">Plati</button>
-        <a href="intent://halkbank.24x7.rs/ips/ek/fl/?data=SzpFS3xWOjAxfEM6MXxSOjI2NTMzMDAzMTAwMTQyMDI4NHxOOkNBTSBFTkdJTkVFUklORyBET098STpSU0QxMDAsMDB8U0Y6MjIxfE06NTQzMnxSUDo3NTA0MDAyQzI0MDg2MDAwMDAy&callback=https%3A%2F%2Fnikolablesic.github.io%2Fsuccessful-payment.html#Intent;scheme=https;end" class="pay-button">Plati</a>
+        <a id="payment-link" href="#" style="text-decoration: none;">
+            <button class="payment-button">Plati</button>
+        </a>
 
         <script>
-            document.getElementById("payment-button").addEventListener("click", function() {
+            document.getElementById("bank-select").addEventListener("change", function() {
                 var selectElement = document.getElementById("bank-select");
                 var selectedBank = selectElement.options[selectElement.selectedIndex].value;
                 var tabliceValue = getUrlParameter('tablice');
                 var redirectURL = selectedBank + "?data=SzpFS3xWOjAxfEM6MXxSOjE2MDAwMDAwMDAyMTUzNTMzN3xOOkpLUCBQYXJraW5nIHNlcnZpcyBOb3ZpIFNhZHxJOlJTRDIwMCwwMHxTRjoyMjF8TTo0OTAwfFJQOjEwMDAxNjkwMjQxMTUwMDAwMDE=&callback=https%3A%2F%2Fnikolablesic.github.io%2Fsuccessful.html%3Ftablice%3D#Intent;scheme=https" + encodeURIComponent(tabliceValue);
-                window.open(redirectURL, '_blank');
+                document.getElementById("payment-link").href = redirectURL;
             });
 
             function getUrlParameter(name) {
