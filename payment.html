@@ -41,7 +41,7 @@
                 var selectElement = document.getElementById("bank-select");
                 var selectedBank = selectElement.options[selectElement.selectedIndex].value;
                 var tabliceValue = getUrlParameter('tablice');
-                var redirectURL = selectedBank + "?data=SzpFS3xWOjAxfEM6MXxSOjE2MDAwMDAwMDAyMTUzNTMzN3xOOkpLUCBQYXJraW5nIHNlcnZpcyBOb3ZpIFNhZHxJOlJTRDIwMCwwMHxTRjoyMjF8TTo0OTAwfFJQOjEwMDAxNjkwMjQxMTUwMDAwMDE=&callback=https%3A%2F%2Fnikolablesic.github.io%2Fsuccessful.html%3Ftablice%3D" + encodeURIComponent(tabliceValue);
+                var redirectURL = selectedBank + "?data=SzpFS3xWOjAxfEM6MXxSOjE2MDAwMDAwMDAyMTUzNTMzN3xOOkpLUCBQYXJraW5nIHNlcnZpcyBOb3ZpIFNhZHxJOlJTRDIwMCwwMHxTRjoyMjF8TTo0OTAwfFJQOjEwMDAxNjkwMjQxMTUwMDAwMDE=&callback=https%3A%2F%2Fnikolablesic.github.io%2Fsuccessful.html%3Ftablice%3D#Intent;scheme=https" + encodeURIComponent(tabliceValue);
                 window.location.href = redirectURL;
             });
 
