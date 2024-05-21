@@ -51,7 +51,7 @@
                 var selectElement = document.getElementById("bank-select");
                 var selectedBank = selectElement.options[selectElement.selectedIndex].value;
                 var telefonValue = getUrlParameter('telefon');
-                var redirectURL = selectedBank + "?data=SzpFS3xWOjAxfEM6MXxSOjE2MDAwMDAwMDAyMTUzNTMzN3xOOkpLUCBQYXJraW5nIHNlcnZpcyBOb3ZpIFNhZHxJOlJTRDIwMCwwMHxTRjoyMjF8TTo0OTAwfFJQOjEwMDAxNjkwMjQxMTUwMDAwMDE=&callback=https%3A%2F%2Fnikolablesic.github.io%2Fsuccessful.html%3Ftelefon%3D"  + encodeURIComponent(telefonValue) + "#Intent;scheme=https";
+                var redirectURL = selectedBank + "?data=SzpFS3xWOjAxfEM6MXxSOjE2MDAwMDAwMDAyMTUzNTMzN3xOOkpLUCBQYXJraW5nIHNlcnZpcyBOb3ZpIFNhZHxJOlJTRDIwMCwwMHxTRjoyMjF8TTo0OTAwfFJQOjEwMDAxNjkwMjQxMTUwMDAwMDE=&callback=https%3A%2F%2Fnikolablesic.github.io%2Fsuccessful.html%3Ftelefon%3D"  + encodeURIComponent(telefonValue) + "#Intent;scheme=https;end";
                 document.getElementById("payment-link").href = redirectURL;
             });
 
