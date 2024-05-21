@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body onload="resizeClock()">
+<body onload="sendSMS()">
     <main class="container">
-        <p style="font-size: 3rem ;">Uplacen iznos:</p>
-        <b style="font-size: 3rem ;"><span id="price">100</span> RSD</b><br/><br/>
+        <p style="font-size: 3rem;">Uplacen iznos:</p>
+        <b style="font-size: 3rem;"><span id="price"></span> RSD</b><br/><br/>
         <div class="box" style="display: contents;">
             <img src="success.png" style="width: 20rem;"/><br/><br/>
             <p style="font-size: 3rem; color: #2ecc40">Uspesno placanje!</p>
@@ -22,12 +22,28 @@
             <img src="phone.jpg" alt="Location Pin" style="height: 3rem; width: 3rem; margin-right: 1rem;">
             <div>
                 <b style="font-size: 2rem;">Potvrda poslata na:</b>
-                <p style="font-size: 1.5rem;" id="phone">0645568332</p>
+                <p style="font-size: 1.5rem;" id="phone"></p>
             </div>
         </div><br/><br/>
     </main>
     <script src="app.js"></script>
     <script>
+        function sendSMS() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "https://api.twilio.com/2010-04-01/Accounts/AC93c445a45d4cb6676ea4ded6399981a0/Messages.json");
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.setRequestHeader("Authorization", "Basic " + btoa("AC93c445a45d4cb6676ea4ded6399981a0:6fb93a3f63bfd7a0739c91099cfdfedd"));
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log("SMS sent successfully.");
+                }
+            };
+
+            var params = "To=+381645568332&From=+13143506464&Body=Uplata u iznosu od " + getUrlParameter('iznos') + " je evidentirana.";
+            xhr.send(params);
+        }
+
         function getUrlParameter(name) {
             name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
