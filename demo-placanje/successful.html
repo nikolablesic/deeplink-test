@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Naplata parkiranja</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="resizeClock()">
+    <main class="container">
+        <p style="font-size: 3rem ;">Uplacen iznos:</p>
+        <b style="font-size: 3rem ;"><span id="price">100</span> RSD</b><br/><br/>
+        <div class="box" style="display: contents;">
+            <img src="success.png" style="width: 20rem;"/><br/><br/>
+            <p style="font-size: 3rem; color: #2ecc40">Uspesno placanje!</p>
+        </div>
+        <p style="font-size: 3rem; margin-top: 8rem; text-align: center">Broj računa:<br/><span id="account"></span></p><br/><br/>
+        <div style="display: flex; align-items: center;">
+            <img src="phone.jpg" alt="Location Pin" style="height: 3rem; width: 3rem; margin-right: 1rem;">
+            <div>
+                <b style="font-size: 2rem;">Potvrda poslata na:</b>
+                <p style="font-size: 1.5rem;" id="phone">0645568332</p>
+            </div>
+        </div><br/><br/>
+    </main>
+    <script src="app.js"></script>
+    <script>
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        document.getElementById('account').innerText = getUrlParameter('racun');
+        document.getElementById('phone').innerText = getUrlParameter('telefon');
+        document.getElementById('price').innerText = getUrlParameter('iznos');
+    </script>
+</body>
+
+</html>
