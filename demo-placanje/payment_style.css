@@ -53,6 +53,8 @@ body {
     font-size: 4rem;
     margin: 0;
 	text-align: center;
+    width: 80%;
+    border: 0px;
 }
 
 .payment-button {

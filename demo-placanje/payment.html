@@ -12,9 +12,9 @@
         <img style="width: 80%;" src="ips_logo.png"/>
         <p class="description">Izvršite plaćanje u okruženju vaše banke tako što ćete izabrati banku čiju mbanking aplikaciju imate na svom uređaju i kliknuti na dugme PLATI.</p>
         <p class="description">Uplata na račun br: <br/> <b id="account-number"></b></p>
-        <span>
+        <span style="display: flex; flex-direction: column; align-items: center; text-align: center;">
             <p class="amount">Iznos:</p><br/>
-            <b class="amount" id="amount"></b>
+            <input type="text" id="amount-input" class="amount" placeholder="Unesite iznos"/>
         </span>
         <p class="description" style="text-align: left;">Platite mbanking aplikacijom svoje banke:</p>
         <select id="bank-select" class="bank-select">
@@ -42,9 +42,7 @@
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 var accountNumber = getUrlParameter('racun');
-                var amount = getUrlParameter('iznos');
                 document.getElementById("account-number").textContent = accountNumber;
-                document.getElementById("amount").textContent = amount + " RSD";
             });
 
             document.getElementById("bank-select").addEventListener("change", function() {
@@ -52,7 +50,7 @@
                 var selectedBank = selectElement.options[selectElement.selectedIndex].value;
                 var telefonValue = getUrlParameter('telefon');
                 var racunValue = getUrlParameter('racun');
-                var iznosValue = getUrlParameter('iznos');
+                var iznosValue = document.getElementById("amount-input").value;
                 var redirectURL = selectedBank + "?data=SzpFS3xWOjAxfEM6MXxSOjE2MDAwMDAwMDAyMTUzNTMzN3xOOkpLUCBQYXJraW5nIHNlcnZpcyBOb3ZpIFNhZHxJOlJTRDIwMCwwMHxTRjoyMjF8TTo0OTAwfFJQOjEwMDAxNjkwMjQxMTUwMDAwMDE=&callback=https%3A%2F%2Fnikolablesic.github.io%2Fdemo-placanje%2Fsuccessful.html%3Ftelefon%3D"  + encodeURIComponent(telefonValue) + "%26racun%3D" + encodeURIComponent(racunValue) + "%26iznos%3D" + encodeURIComponent(iznosValue) +  "#Intent;scheme=https;end";
                 document.getElementById("payment-link").href = redirectURL;
             });

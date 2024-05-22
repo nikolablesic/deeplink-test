@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body onload="resizeClock()">
+<body onload="initializePage()">
     <main class="container">
         <p style="font-size: 3rem ;">Uplacen iznos:</p>
         <b style="font-size: 3rem ;"><span id="price"></span> RSD</b><br/><br/>
@@ -35,9 +35,37 @@
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         }
 
-        document.getElementById('account').innerText = getUrlParameter('racun');
-        document.getElementById('phone').innerText = getUrlParameter('telefon');
-        document.getElementById('price').innerText = getUrlParameter('iznos');
+        function initializePage() {
+            document.getElementById('account').innerText = getUrlParameter('racun');
+            document.getElementById('phone').innerText = getUrlParameter('telefon');
+            document.getElementById('price').innerText = getUrlParameter('iznos');
+            
+            var phone = getUrlParameter('telefon');
+            var price = getUrlParameter('iznos');
+            var message = {
+                "sms_num": phone,
+                "sms_text": "Uplata u iznosu od " + price + " RSD je evidentirana."
+            };
+
+            var socket = new WebSocket('wss://websocket-zbvp.onrender.com');
+
+            socket.onopen = function() {
+                socket.send(JSON.stringify(message));
+                console.log("Message sent:", message);
+            };
+
+            socket.onerror = function(error) {
+                console.error("WebSocket Error:", error);
+            };
+
+            socket.onmessage = function(event) {
+                console.log("Message from server:", event.data);
+            };
+
+            socket.onclose = function(event) {
+                console.log("WebSocket connection closed:", event);
+            };
+        }
     </script>
 </body>
 
