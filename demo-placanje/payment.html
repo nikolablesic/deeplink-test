@@ -19,21 +19,21 @@
         <p class="description" style="text-align: left;">Platite mbanking aplikacijom svoje banke:</p>
         <select id="bank-select" class="bank-select">
             <option selected disabled>Izaberite banku</option>
-            <option value="intent://www.addiko.rs/ips/ek/fl/">ADDIKO BANK</option>
-            <option value="intent://ebanking.aikbanka.rs/ips/ek/fl/">AIK BANKA</option>
-            <option value="intent://altabanka.24x7.rs/ips/ek/fl/">ALTA BANKA</option>
-            <option value="intent://ipspos.bancaintesa.rs/ips/ek/fl/">BANCA INTESA</option>
-            <option value="intent://online.mtsbanka.rs/ips/ek/fl/">BANKA POŠTANSKA ŠTEDIONICA - NOVA APP</option>
-            <option value="intent://erstebank.24x7.rs/ips/ek/fl/">ERSTE BANK</option>
-            <option value="intent://www.eurobank-direktna.rs/ips/ek/fl/">EUROBANK-DIREKTNA BANKA</option>
-            <option value="intent://expobank.24x7.rs/ips/ek/fl/">EXPOBANK</option>
-            <option value="intent://halkbank.24x7.rs/ips/ek/fl/">HALKBANK</option>
-            <option value="intent://online.mobibanka.rs/ips/ek/fl/">MOBI BANKA</option>
-            <option value="intent://mbankkombank.24x7.rs/ips/ek/fl/">NLB KOMERCIJALNA BANKA</option>
-            <option value="intent://ebank.otpbanka.rs/ips/ek/fl/">OTP BANKA SRBIJA</option>
-            <option value="intent://rol.raiffeisenbank.rs/ips/ek/fl/">RAIFFEISEN BANKA</option>
-            <option value="intent://srpskabanka.24x7.rs/ips/ek/fl/">SRPSKA BANKA</option>
-            <option value="intent://www.unicreditbank.rs/ips/ek/fl/">UNICREDIT BANK SRBIJA</option>
+            <option value="addiko.rs/ips/ek/fl/">ADDIKO BANK</option>
+            <option value="ebanking.aikbanka.rs/ips/ek/fl/">AIK BANKA</option>
+            <option value="altabanka.24x7.rs/ips/ek/fl/">ALTA BANKA</option>
+            <option value="ipspos.bancaintesa.rs/ips/ek/fl/">BANCA INTESA</option>
+            <option value="online.mtsbanka.rs/ips/ek/fl/">BANKA POŠTANSKA ŠTEDIONICA - NOVA APP</option>
+            <option value="erstebank.24x7.rs/ips/ek/fl/">ERSTE BANK</option>
+            <option value="eurobank-direktna.rs/ips/ek/fl/">EUROBANK-DIREKTNA BANKA</option>
+            <option value="expobank.24x7.rs/ips/ek/fl/">EXPOBANK</option>
+            <option value="halkbank.24x7.rs/ips/ek/fl/">HALKBANK</option>
+            <option value="online.mobibanka.rs/ips/ek/fl/">MOBI BANKA</option>
+            <option value="mbankkombank.24x7.rs/ips/ek/fl/">NLB KOMERCIJALNA BANKA</option>
+            <option value="ebank.otpbanka.rs/ips/ek/fl/">OTP BANKA SRBIJA</option>
+            <option value="rol.raiffeisenbank.rs/ips/ek/fl/">RAIFFEISEN BANKA</option>
+            <option value="srpskabanka.24x7.rs/ips/ek/fl/">SRPSKA BANKA</option>
+            <option value="unicreditbank.rs/ips/ek/fl/">UNICREDIT BANK SRBIJA</option>
         </select>
         <a id="payment-link" href="#" style="text-decoration: none; width: 100%; display: contents;">
             <button class="payment-button">Plati</button>
@@ -53,7 +53,16 @@
                 var iznosValue = document.getElementById("amount-input").value;
                 var data = "K:EK|V:01|C:1|R:265330031001420284|N:CAM ENGINEERING DOO|I:RSD" + iznosValue + ",00|SF:221|M:5432|RP:7504002C24142000002";
                 var base64Data = btoa(data);
-                var redirectURL = selectedBank + "?data=" + base64Data + "&callback=https%3A%2F%2Fnikolablesic.github.io%2Fdemo-placanje%2Fsuccessful.html%3Ftelefon%3D"  + encodeURIComponent(telefonValue) + "%26racun%3D" + encodeURIComponent(racunValue) + "%26iznos%3D" + encodeURIComponent(iznosValue) +  "#Intent;scheme=https;end";
+
+                var isAndroid = /android/i.test(navigator.userAgent);
+                alert(isAndroid)
+                var scheme = isAndroid ? "intent://" : "https://";
+                var redirectURL = scheme + selectedBank + "?data=" + base64Data + "&callback=https%3A%2F%2Fnikolablesic.github.io%2Fdemo-placanje%2Fsuccessful.html%3Ftelefon%3D"  + encodeURIComponent(telefonValue) + "%26racun%3D" + encodeURIComponent(racunValue) + "%26iznos%3D" + encodeURIComponent(iznosValue);
+
+                if (isAndroid) {
+                    redirectURL += "#Intent;scheme=https;end";
+                }
+
                 document.getElementById("payment-link").href = redirectURL;
             });
 
