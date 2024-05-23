@@ -51,7 +51,9 @@
                 var telefonValue = getUrlParameter('telefon');
                 var racunValue = getUrlParameter('racun');
                 var iznosValue = document.getElementById("amount-input").value;
-                var redirectURL = selectedBank + "?data=SzpFS3xWOjAxfEM6MXxSOjE2MDAwMDAwMDAyMTUzNTMzN3xOOkpLUCBQYXJraW5nIHNlcnZpcyBOb3ZpIFNhZHxJOlJTRDIwMCwwMHxTRjoyMjF8TTo0OTAwfFJQOjEwMDAxNjkwMjQxMTUwMDAwMDE=&callback=https%3A%2F%2Fnikolablesic.github.io%2Fdemo-placanje%2Fsuccessful.html%3Ftelefon%3D"  + encodeURIComponent(telefonValue) + "%26racun%3D" + encodeURIComponent(racunValue) + "%26iznos%3D" + encodeURIComponent(iznosValue) +  "#Intent;scheme=https;end";
+                var data = "K:EK|V:01|C:1|R:265330031001420284|N:CAM ENGINEERING DOO|I:RSD" + iznosValue + ",00|SF:221|M:5432|RP:7504002C24142000002";
+                var base64Data = btoa(data);
+                var redirectURL = selectedBank + "?data=" + base64Data + "&callback=https%3A%2F%2Fnikolablesic.github.io%2Fdemo-placanje%2Fsuccessful.html%3Ftelefon%3D"  + encodeURIComponent(telefonValue) + "%26racun%3D" + encodeURIComponent(racunValue) + "%26iznos%3D" + encodeURIComponent(iznosValue) +  "#Intent;scheme=https;end";
                 document.getElementById("payment-link").href = redirectURL;
             });
 
