@@ -18,6 +18,7 @@ document.getElementById('generateButton').addEventListener('click', function() {
 
         nfcButton.addEventListener('click', async () => {
             try {
+                alert("Start");
                 if ('NDEFWriter' in window) {
                     const ndef = new NDEFWriter();
                     await ndef.write(qrData);
