@@ -43,6 +43,19 @@
             document.addEventListener("DOMContentLoaded", function() {
                 var accountNumber = getUrlParameter('racun');
                 document.getElementById("account-number").textContent = accountNumber;
+
+                const testDiv = document.createElement('div');
+                testDiv.style.height = '100svh';
+                document.body.appendChild(testDiv);
+                const svhSupported = testDiv.clientHeight > 0;
+                document.body.removeChild(testDiv);
+
+                if (!svhSupported) {
+                    const container = document.querySelector('.container');
+                    container.style.paddingTop = '10vh';
+                    container.style.paddingBottom = '10vh';
+                    container.style.height = 'calc(80vh - 20vh)';
+                }
             });
 
             document.getElementById("bank-select").addEventListener("change", function() {
