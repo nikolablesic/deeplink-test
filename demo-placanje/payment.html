@@ -55,7 +55,6 @@
                 var base64Data = btoa(data);
 
                 var isAndroid = /android/i.test(navigator.userAgent);
-                alert(isAndroid)
                 var scheme = isAndroid ? "intent://" : "https://";
                 var redirectURL = scheme + selectedBank + "?data=" + base64Data + "&callback=https%3A%2F%2Fnikolablesic.github.io%2Fdemo-placanje%2Fsuccessful.html%3Ftelefon%3D"  + encodeURIComponent(telefonValue) + "%26racun%3D" + encodeURIComponent(racunValue) + "%26iznos%3D" + encodeURIComponent(iznosValue);
 
