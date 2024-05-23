@@ -27,7 +27,8 @@ body {
     display: flex;
     align-items: stretch;
     justify-content: center;
-    min-height: 100vh;
+    min-height: 80vh;
+    min-height: 100svh;
 }
 
 .container {
@@ -38,7 +39,7 @@ body {
     width: 90%;
     max-width: 600px;
     margin: auto;
-    height: 100vh;
+    height: 80vh;
     height: 100svh;
 }
 
@@ -55,6 +56,7 @@ body {
 	text-align: center;
     width: 80%;
     border: 0px;
+    background: #FAF8FD;
 }
 
 .payment-button {
